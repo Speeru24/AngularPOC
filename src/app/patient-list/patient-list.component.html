@@ -32,7 +32,7 @@
 </table>
 
 
-<div  style="border:1px solid" *ngIf="deletedPatientList.length > 0 && isDeleteSectionVisible == true">
+<div  style="border:1px solid" *ngIf="deletedPatientList.length > 0 && isDeleteSectionVisible">
   <button class="btn btn-success" (click)="onUndoDelete()">Undo  </button> 
   <div class="row" *ngFor="let deletedData of deletedPatientList">
     <hr>

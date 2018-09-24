@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PatientService } from '../Service/patient.service';
 import { patient } from '../Models/Patient.model';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-patient-list',
@@ -11,31 +12,32 @@ export class PatientListComponent implements OnInit {
 
   public patientList: patient[];
   public deletedPatientList: patient[] = [];
-  isDesc: boolean;
+  public isDesc: boolean;
 
   //To Show Deleted data for 30 seconds
-  isDeleteSectionVisible:boolean;
-  public t:any;
+  public isDeleteSectionVisible: boolean = false;
+  public t: any;
   constructor(public patientArray: PatientService) {
   }
 
   ngOnInit() {
+    
     this.patientList = this.patientArray.GetAllPatients();
   }
 
-  
+
   onPatientDelete(patientId: number) {
     debugger;
     this.patientArray.deletePatient(patientId);
     this.deletedPatientList = this.patientArray.deletedPatientList;
     console.log("deleted patient count = " + this.deletedPatientList.length);
     this.isDeleteSectionVisible = true;
-    this.t = setTimeout(function(){ 
+    console.log("Onpatient Delete" + this.isDeleteSectionVisible);
+
+    this.t = setTimeout(() => {
       this.isDeleteSectionVisible = false;
-      // this.deletedPatientList = 0;
-      // this.patientArray.onUndoDeletedData();
-     }, 5000);
-    
+    },3000)
+  
   }
 
   onUndoDelete() {
