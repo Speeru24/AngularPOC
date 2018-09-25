@@ -33,10 +33,11 @@ export class PatientListComponent implements OnInit {
     console.log("deleted patient count = " + this.deletedPatientList.length);
     this.isDeleteSectionVisible = true;
     console.log("Onpatient Delete" + this.isDeleteSectionVisible);
-
+    clearTimeout(this.t);
     this.t = setTimeout(() => {
       this.isDeleteSectionVisible = false;
-    },3000)
+      this.patientArray.clearDeletedPatientList();    
+    },30000)
   
   }
 

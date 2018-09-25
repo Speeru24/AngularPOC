@@ -74,6 +74,10 @@ export class PatientService implements OnInit {
     //   this.deletedPatientList = [];
     // }
     this.patientList.splice(1, 0, ...this.deletedPatientList);
+    this.clearDeletedPatientList();  
+  }
+
+  clearDeletedPatientList(){
     this.deletedPatientList.length = 0;
   }
 }
